@@ -7,15 +7,15 @@ let pokemonTypes=[
 let pokemonList = [
   { pokemon1Height: 10,
     pokemon1Name: 'Bulbasaur',
-    pokemonTypes
+    pokemonTypes [0]
   },
   {pokemon2Height: 8,
     pokemon2Name: 'Pikachu',
-    pokemonTypes
+    pokemonTypes [1]
   },
   { pokemon3Height: 5,
     pokemon3Name: 'Mewtwo',
-    pokemonTypes
+    pokemonTypes [2]
   }
 ];
 
