@@ -1,22 +1,27 @@
-let pokemonTypes=[
-  'grass', 
-  'electric', 
-  'artificial'
-];
-
 let pokemonList = [
   { pokemon1Height: 10,
     pokemon1Name: 'Bulbasaur',
-    pokemonTypes [0]
+    pokemonType1: Types=[
+      'grass', 
+      'electric', 
+      'artificial'
+    ]
   },
   {pokemon2Height: 8,
     pokemon2Name: 'Pikachu',
-    pokemonTypes [1]
+    pokemonType2: Types=[
+      'grass', 
+      'electric', 
+      'artificial'
+    ]
   },
   { pokemon3Height: 5,
     pokemon3Name: 'Mewtwo',
-    pokemonTypes [2]
-  }
+    pokemonType3: Types=[
+      'grass', 
+      'electric', 
+      'artificial'
+    ]
 ];
 
 
