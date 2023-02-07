@@ -1,7 +1,7 @@
 let pokemonList = [
   { pokemon1Height: 10,
     pokemon1Name: 'Bulbasaur',
-    pokemonType1: Types=[
+    pokemonTypes=[
       'grass', 
       'electric', 
       'artificial'
@@ -9,7 +9,7 @@ let pokemonList = [
   },
   {pokemon2Height: 8,
     pokemon2Name: 'Pikachu',
-    pokemonType2: Types=[
+    pokemonTypes=[
       'grass', 
       'electric', 
       'artificial'
@@ -17,7 +17,7 @@ let pokemonList = [
   },
   { pokemon3Height: 5,
     pokemon3Name: 'Mewtwo',
-    pokemonType3: Types=[
+    pokemonTypes=[
       'grass', 
       'electric', 
       'artificial'
