@@ -22,6 +22,7 @@ let pokemonList = [
       'electric', 
       'artificial'
     ]
+  }
 ];
 
 
