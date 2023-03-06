@@ -42,7 +42,7 @@ pokemonRepository.add({ name: 'Charmander'});
 
 
 
-pokemonRepository.forEach(function(item) {
+pokemonRepository.getAll().forEach(function(item) {
   if (item.height >9){
     document.write("<p>" + item.name + " " + "(height:" + item.height + ")" + " Wow! That's big!" + "</p>")
   }else {
