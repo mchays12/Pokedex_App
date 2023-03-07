@@ -39,7 +39,7 @@ function getAll () {
 }
 
 function showDetails(pokemon) {
-  console.log(pokemon.name);
+  console.log(pokemon);
 }
 
 function addListItem(pokemon) {
@@ -50,7 +50,10 @@ function addListItem(pokemon) {
   button.classList.add = 'button-class';
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
-  button.addEventListener('click', showDetails);
+  button.addEventListener('click', function(event) {
+      event.preventDefault();
+      showDetails(pokemon.name);
+  });
 }
 
 return {
