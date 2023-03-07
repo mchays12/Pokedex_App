@@ -38,6 +38,10 @@ function getAll () {
   return pokemonList;
 }
 
+function showDetails(pokemon) {
+  console.log(pokemon.name);
+}
+
 function addListItem(pokemon) {
   let pokemonList = document.querySelector('.pokemon-list');
   let listPokemon = document.createElement('li');
@@ -46,19 +50,15 @@ function addListItem(pokemon) {
   button.classList.add = 'button-class';
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
-  button.addEventListener('click', function(){
-    showDetails(pokemon);
+  button.addEventListener('click', function(showDetails){
   });
 }
-
-document.querySelector('.pokemon-list').addEventListener('click', function(pokemon){
-  console.log(pokemon);
-})
 
 return {
   add: add,
   getAll: getAll,
-  addListItem: addListItem
+  addListItem: addListItem,
+  showDetails: showDetails
 }
 
 })();
