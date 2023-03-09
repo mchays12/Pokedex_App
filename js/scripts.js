@@ -1,32 +1,44 @@
 // used IIFE to make code more readable //
 let pokemonRepository = (function() {
-  let pokemonList = [
-    { height: 10,
-      name: 'Bulbasaur',
-      types:[
-        'grass', 
-        'poison'
-      ]
-    },
-    { height: 8,
-      name: 'Pikachu',
-      types:[ 
-        'electric' 
-      ]
-    },
-    { height: 5,
-      name: 'Mewtwo',
-      types:[
-        'artificial'
-      ]
-    }
-  ];
+  let pokemonList = []
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/'
+/* The loadList function will fetch the data from the API above and then add 
+each pokemon to the pokemonList from the add function used earlier*/
+  function loadList() {
+    return fetch(apiUrl).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      json.results.forEach(function(item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function(e) {
+      console.error(e);
+    });
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function(response) {
+      return response.json();
+    }).then(function(details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function(e) {
+      console.error(e);
+    });
+  }
 
 //double check to make sure that pokemon being added are added correctly//
 function add(pokemon) {
   if (
     typeof pokemon === 'object'&&
-    'name' in pokemon
+    'name' in pokemon,
+    'detailsUrl' in pokemon
   ) {
     pokemonList.push(pokemon);
   }else{
@@ -39,7 +51,9 @@ function getAll () {
 }
 
 function showDetails(pokemon) {
-  console.log(pokemon);
+  loadDetails(pokemon).then(function() {
+    console.log(pokemon);
+  })
 }
 
 function addListItem(pokemon) {
@@ -52,7 +66,7 @@ function addListItem(pokemon) {
   pokemonList.appendChild(listPokemon);
   button.addEventListener('click', function(event) {
       event.preventDefault();
-      showDetails(pokemon.name);
+      showDetails(pokemon);
   });
 }
 
@@ -60,16 +74,18 @@ return {
   add: add,
   getAll: getAll,
   addListItem: addListItem,
-  showDetails: showDetails
+  showDetails: showDetails,
+  loadList: loadList,
+  loadDetails: loadDetails
 }
 
 })();
 
-pokemonRepository.add({ name: 'Charmander', height: 12, types: ['fire, fly']});
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
-})
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
 
 
