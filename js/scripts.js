@@ -4,7 +4,104 @@ let pokemonRepository = (function() {
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/'
 /* The loadList function will fetch the data from the API above and then add 
 each pokemon to the pokemonList from the add function used earlier*/
-  function loadList() {
+  
+let modalContainer = document.querySelector('#modal-container');
+
+//double check to make sure that pokemon being added are added correctly//
+ function add(pokemon) {
+  if (
+    typeof pokemon === 'object'&&
+    'name' in pokemon,
+    'detailsUrl' in pokemon
+  ) {
+    pokemonList.push(pokemon);
+  }else{
+    console.log('Pokemon entry is incorrect');
+  } 
+}
+
+function getAll () {
+  return pokemonList;
+}
+
+function addListItem(pokemon) {
+  let pokemonList = document.querySelector('.pokemon-list');
+  let listPokemon = document.createElement('li');
+  let button = document.createElement('button');
+  button.innerText = pokemon.name;
+  button.classList.add = 'button-pokemon';
+  listPokemon.appendChild(button);
+  pokemonList.appendChild(listPokemon);
+  button.addEventListener('click', function(event) {
+      event.preventDefault();
+      showDetails(pokemon);
+  });
+}
+
+function showDetails(pokemon) {
+  loadDetails(pokemon).then(function() {
+    showModal(pokemon);
+  })
+} 
+
+function showModal (pokemon) {
+ //this below will clear the modal of anythign that was within it//
+ modalContainer.innerHTML = '';
+ let modal = document.createElement('div');
+ modal.classList.add('modal');
+
+ let closeButton = document.createElement('button');
+ closeButton.classList.add('close-modal');
+ closeButton.classList.innerText = 'Close';
+ closeButton.addEventListener('click', hideModal); 
+
+ let titlePokemon = document.createElement('h1');
+ titlePokemon.innerText = pokemon.name;
+
+ let contentPokemon = document.createElement('p');
+ contentPokemon.innerText = pokemon.height;
+
+ let imagePokemon = document.createElement('img');
+ imagePokemon.src = pokemon.imageUrl;
+
+
+
+
+ modal.appendChild(closeButton);
+ modal.appendChild(titlePokemon);
+ modal.appendChild(contentPokemon);
+ modal.appendChild(imagePokemon);
+ modalContainer.appendChild(modal);
+ 
+ 
+ modalContainer.classList.add('is-visible');
+ 
+}
+
+function hideModal () {
+  modalContainer.classList.remove('is-visible');
+
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal;
+  }
+});
+
+modalContainer.addEventListener('click', (e) => {
+  
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal;
+  }
+}); 
+
+document.querySelector('.pokemon-list').addEventListener('click', () => {
+  showModal();
+});
+
+function loadList() {
     return fetch(apiUrl).then(function(response) {
       return response.json();
     }).then(function(json) {
@@ -33,43 +130,6 @@ each pokemon to the pokemonList from the add function used earlier*/
     });
   }
 
-//double check to make sure that pokemon being added are added correctly//
-function add(pokemon) {
-  if (
-    typeof pokemon === 'object'&&
-    'name' in pokemon,
-    'detailsUrl' in pokemon
-  ) {
-    pokemonList.push(pokemon);
-  }else{
-    console.log('Pokemon entry is incorrect');
-  } 
-}
-
-function getAll () {
-  return pokemonList;
-}
-
-function showDetails(pokemon) {
-  loadDetails(pokemon).then(function() {
-    console.log(pokemon);
-  })
-}
-
-function addListItem(pokemon) {
-  let pokemonList = document.querySelector('.pokemon-list');
-  let listPokemon = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add = 'button-class';
-  listPokemon.appendChild(button);
-  pokemonList.appendChild(listPokemon);
-  button.addEventListener('click', function(event) {
-      event.preventDefault();
-      showDetails(pokemon);
-  });
-}
-
 return {
   add: add,
   getAll: getAll,
@@ -87,15 +147,3 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-
-
-
-/* this is going to display the name of my pokemon, a space, and their height in parenthesis
-if the height is greater than 9, it will also display the message, "wow! that's big"*/
-/* for (let i=0; i<pokemonList.length; i++) { 
-  if (pokemonList[i].height >9){
-  document.write("<p>" + pokemonList[i].name + " " + "(height:" + pokemonList[i].height + ")" + " Wow! That's big!" + "</p>")
-  }else {
-  document.write("<p>" + pokemonList[i].name + " " + "(height:" + pokemonList[i].height + ")" + "</p>");
-  }
-} */
