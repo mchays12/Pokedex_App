@@ -1,5 +1,15 @@
+:root { /*color variable*/
+	--white: #FFFFFF; /*background-color*/
+	--experience-background: #023e66d0; /*primary-color*/
+	--azure: #ffffff; /*secondary-color1*/
+	--button-background: #0d8d87; /*secondary-color2*/
+	--cornsilk: #FFF8DC; /*visited-color*/
+	--sun-red: #cc4c00; /*sun primary*/
+	--sun-orange: #ec9400; /*sun secondary1*/
+	--sun-yellow: #b500eca1; /*sun secondary2*/
+}
 
-button-pokemon, .button-pokemon {
+button, .button-pokemon {
   border: none;
 	/* takes the font from the outer container */
 	font-family: inherit;
@@ -8,15 +18,16 @@ button-pokemon, .button-pokemon {
 	color: var(--white);
 	text-decoration: none;
 	/* adds spacing to the button (will be discussed) */
-	padding: 10px;
-	border-radius: 3px;
+	padding: 20px;
+	border-radius: 8px;
 	/*gives the button a bottom border of 2px, a type of solid, and a color in RGBA format */
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 	transition: opacity, 0.9s, font-size .4s;
+  width: 250px;
 }
 
-button-pokemon:hover, .button-pokemon:hover, 
-button-pokemon:focus, .button-pokemon:focus {
+button:hover, .button-pokemon:hover, 
+button:focus, .button-pokemon:focus {
 	/* lets the mouse appear as a hand when it hovers over the button */
 	cursor: pointer;
 	/* reduces the opacity of the button to 80% */
@@ -55,6 +66,17 @@ body {
   text-align: center;
 }
 
+.close-modal {
+  margin:auto;
+  float: right;
+  border: 0;
+  background: none;
+  color: #001aff;
+  text-decoration: underline;
+  text-align: left;
+  font-size: 36px;
+}
+
 .modal {
   margin: auto;
   display: inline-block;
@@ -67,16 +89,6 @@ body {
   text-align: left;
 }
 
-.close-modal {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #001aff;
-  text-decoration: underline;
-  font-size: 36px;
-}
-
 .modal h1 {
   margin-top: 0;
 }
@@ -85,3 +97,8 @@ body {
   margin-bottom: 0;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

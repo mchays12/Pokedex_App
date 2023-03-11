@@ -5,7 +5,7 @@ let pokemonRepository = (function() {
 /* The loadList function will fetch the data from the API above and then add 
 each pokemon to the pokemonList from the add function used earlier*/
   
-let modalContainer = document.querySelector('#modal-container');
+  let modalContainer = document.querySelector('#modal-container');
 
 //double check to make sure that pokemon being added are added correctly//
  function add(pokemon) {
@@ -59,20 +59,16 @@ function showModal (pokemon) {
  titlePokemon.innerText = pokemon.name;
 
  let contentPokemon = document.createElement('p');
- contentPokemon.innerText = pokemon.height;
+ contentPokemon.innerText = `height ${pokemon.height}`;
 
  let imagePokemon = document.createElement('img');
  imagePokemon.src = pokemon.imageUrl;
-
-
-
 
  modal.appendChild(closeButton);
  modal.appendChild(titlePokemon);
  modal.appendChild(contentPokemon);
  modal.appendChild(imagePokemon);
  modalContainer.appendChild(modal);
- 
  
  modalContainer.classList.add('is-visible');
  
@@ -85,15 +81,14 @@ function hideModal () {
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    hideModal;
+    hideModal();
   }
 });
 
 modalContainer.addEventListener('click', (e) => {
-  
   let target = e.target;
   if (target === modalContainer) {
-    hideModal;
+    hideModal();
   }
 }); 
 
@@ -136,7 +131,8 @@ return {
   addListItem: addListItem,
   showDetails: showDetails,
   loadList: loadList,
-  loadDetails: loadDetails
+  loadDetails: loadDetails,
+  showModal: showModal
 }
 
 })();
