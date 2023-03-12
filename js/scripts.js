@@ -46,13 +46,15 @@ function showDetails(pokemon) {
 
 function showModal (pokemon) {
  //this below will clear the modal of anythign that was within it//
- modalContainer.innerHTML = '';
+ let modalContainer = document.querySelector('#modal-container');
+ modalContainer.innerHTML = ' ';
+ 
  let modal = document.createElement('div');
  modal.classList.add('modal');
 
  let closeButton = document.createElement('button');
+ closeButton.innerText = 'Close';
  closeButton.classList.add('close-modal');
- closeButton.classList.innerText = 'Close';
  closeButton.addEventListener('click', hideModal); 
 
  let titlePokemon = document.createElement('h1');

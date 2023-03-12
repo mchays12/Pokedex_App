@@ -26,7 +26,7 @@ button, .button-pokemon {
   width: 250px;
 }
 
-button:hover, .button-pokemon:hover, 
+button:hover, .button-pokemon:hover,
 button:focus, .button-pokemon:focus {
 	/* lets the mouse appear as a hand when it hovers over the button */
 	cursor: pointer;
@@ -34,7 +34,6 @@ button:focus, .button-pokemon:focus {
 	opacity: 0.4;
 	font-size: 18px;
 	background-color: var(--button-background);
-	
 }
 
 body {
