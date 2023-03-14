@@ -10,7 +10,7 @@ each pokemon to the pokemonList from the add function used earlier*/
 //double check to make sure that pokemon being added are added correctly//
  function add(pokemon) {
   if (
-    typeof pokemon === 'object'&&
+    typeof pokemon === 'object' &&
     'name' in pokemon,
     'detailsUrl' in pokemon
   ) {
@@ -46,7 +46,6 @@ function showDetails(pokemon) {
 
 function showModal (pokemon) {
  //this below will clear the modal of anythign that was within it//
- let modalContainer = document.querySelector('#modal-container');
  modalContainer.innerHTML = ' ';
  
  let modal = document.createElement('div');
