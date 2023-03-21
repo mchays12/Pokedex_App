@@ -36,6 +36,10 @@ button:focus, .button-pokemon:focus {
 	background-color: var(--button-background);
 }
 
+.list-group-item {
+border: none;
+}
+
 body {
   font-family: Arial, sans-serif;
 }
