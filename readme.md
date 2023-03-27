@@ -7,7 +7,7 @@ This is the first web application I have worked on! I used HTML, JavaScript with
 This app fetches data from an pokemon API. I created button's using information from the API and then created a modal that takes various information from the API and displays it into the modal.
 
 ## Languages
-CSS
-JavaScript with jQuery
-HTML
+- CSS
+- JavaScript with jQuery
+- HTML
 
