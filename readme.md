@@ -1,6 +1,6 @@
-md
+
 # Pokedex
-** This file is a simple javascript pokedex using jQuery **
+This file is a simple javascript pokedex.
 
 This is the first web application I have worked on! I used HTML, JavaScript with jQuery, and CSS to put together this achievment as apart of my studies with CareerFoundry!
 
