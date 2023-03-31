@@ -23,7 +23,7 @@ each pokemon to the pokemonList from the add function used earlier*/
 function getAll () {
   return pokemonList;
 }
-
+// creates items for each pokemon and turns them into buttons //
 function addListItem(pokemon) {
   let pokemonList = document.querySelector('.pokemon-list');
   let createPokemonListItem = document.createElement('li');
@@ -65,6 +65,7 @@ let pokemonName = $('<h1>' + pokemon.name + '</h1>');
 let pokemonHeight = $('<p>' + 'Height : ' + pokemon.height + '</p>');
 let pokemonImage = $('<img class="modal-img" style="width:50%">');
 pokemonImage.attr('src', pokemon.imageUrl);
+
 
 modalTitle.append(pokemonName);
 modalBody.append(pokemonHeight);
